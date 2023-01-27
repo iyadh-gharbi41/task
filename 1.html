@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Array Methods</h1>
+</body>
+<script>
+
+    //exercice 1
+    const persons = [
+        { name: "MONCEF", age: 13 },
+        { name: "BAHIJA", age: 23 },
+        { name: "ALA", age: 18 },
+    ];
+    function MajeurMineur(liste) {
+        liste.forEach(personne => {
+            (personne.age >= 18) ? personne.status = "majeur" : personne.status = "mineur"
+        });
+        console.log(persons);
+    }
+    MajeurMineur(persons);
+
+    //exercice 2
+    const str1 = 'ahmed&mohsne-moez&samir-fadhel&gsqhb';
+    function FormatToArray(str) {
+        l = str.split("-");
+        liste = [];
+        l.map(function (esm) {
+            o = new Object;
+            o.name = (esm.split("&"))[0];
+            o.surname = (esm.split("&"))[1];
+            liste.push(o);
+        }
+        );
+        console.log(liste);
+    };
+    FormatToArray(str1);
+
+    //exercice 3
+    const users = [
+        { name: "sarah", comment: "j'aime ce poste ❤" },
+        { name: "monya", comment: "le poste est null 🙁 " },
+        { name: "carlos", comment: "salut l'algérie" }
+    ];
+    function MoodDetect(liste) {
+        l = [];
+        liste.map(function (personne) {
+            o = new Object;
+            o.name = personne.name;
+            if (personne.comment.includes("❤")) {
+                o.etat = "heureux";
+            }
+            else if (personne.comment.includes("🙁")) {
+                o.etat = "triste";
+            }
+            else {
+                o.etat = "neutre";
+            }
+            l.push(o);
+        });
+        console.log(l);
+    };
+    MoodDetect(users);
+
+    //exercice 4
+    const etudiants = [
+        { name: "sarah", note: undefined },
+        { name: "monya", note: 7 },
+        { name: "carlos", note: 13 },
+        { name: "fadhel", note: 18 },
+    ];
+
+    function FailedStudent(liste) {
+        const l = liste.filter(etudiant => etudiant.note >= 0);
+        const moyenne = (l.reduce((total, etudiant) => total + etudiant.note, 0)) / liste.length;
+        l.map(function (e) {
+            if (e.note >= moyenne) { e.mention = "bien" }
+            else { e.mention = "passable" };
+        })
+            .sort((e1, e2) => e2.note - e1.note);
+        console.log(l);
+    }
+    FailedStudent(etudiants);
+
+
+
+</script>
+
+</html>
